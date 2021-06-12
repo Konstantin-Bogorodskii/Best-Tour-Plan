@@ -1,4 +1,4 @@
-# practise BEM
+# practise layout
 
 Учебный проект
 
@@ -6,8 +6,11 @@
 
 ## Используются технологии
 
-- Методология БЭМ
+
 - HTML
 - CSS
+- SASS
+- JavaScript
+- Методология БЭМ
 - Адаптив
 - Grid
