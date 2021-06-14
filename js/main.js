@@ -50,13 +50,4 @@ $(document).ready(function () {
     modalOverLay.removeClass('modal__overlay--visible');
     modalDialog.removeClass('modal__dialog--visible');
   }
-
-  jQuery.extend(jQuery.ui.dialog.prototype.options, {
-    open: function (event, ui) {
-      let modalDialog = $('.modal__dialog');
-      $('.modal__overlay').on('touchstart click', function () {
-        $(modalDialog).dialog('close');
-      });
-    },
-  });
 });
