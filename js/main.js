@@ -36,18 +36,34 @@ $(document).ready(function () {
   let closeModalButton = $('.modal__close');
   modalButton.on('click', openModal);
   closeModalButton.on('click', closeModal);
+  let modalOverLay = $('.modal__overlay');
+  let modalDialog = $('.modal__dialog');
   function openModal(event) {
     event.preventDefault();
-    let modalOverLay = $('.modal__overlay');
-    let modalDialog = $('.modal__dialog');
+    $('body').css('overflow', 'hidden');
+
     modalOverLay.addClass('modal__overlay--visible');
     modalDialog.addClass('modal__dialog--visible');
   }
   function closeModal(event) {
     event.preventDefault();
-    let modalOverLay = $('.modal__overlay');
-    let modalDialog = $('.modal__dialog');
+    $('body').css('overflow', 'visible');
     modalOverLay.removeClass('modal__overlay--visible');
     modalDialog.removeClass('modal__dialog--visible');
   }
+  $(document).keydown(function (e) {
+    if (e.keyCode === 27) {
+      e.stopPropagation();
+      $('body').css('overflow', 'visible');
+      modalOverLay.removeClass('modal__overlay--visible');
+      modalDialog.removeClass('modal__dialog--visible');
+    }
+  });
+  $('.modal__overlay').click(function (e) {
+    if ($(e.target).closest('.modal__dialog').length == 0) {
+      $('body').css('overflow', 'visible');
+      modalOverLay.removeClass('modal__overlay--visible');
+      modalDialog.removeClass('modal__dialog--visible');
+    }
+  });
 });
