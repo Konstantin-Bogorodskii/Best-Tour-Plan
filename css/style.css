@@ -23,6 +23,15 @@ img {
   max-width: 100%;
 }
 
+button {
+  cursor: pointer;
+  outline-color: #EC1F46;
+}
+
+input, textarea {
+  outline-color: #BDBDBD;
+}
+
 .navbar {
   background: #fff;
 }
@@ -81,6 +90,12 @@ img {
   font-size: 14px;
   line-height: 18px;
   text-transform: uppercase;
+  -webkit-transition: color 0.2s linear;
+  transition: color 0.2s linear;
+}
+
+.navbar-menu__link:hover {
+  color: #EC1F46;
 }
 
 .logo {
@@ -868,6 +883,15 @@ img {
   margin-bottom: 20px;
 }
 
+.footer__link {
+  -webkit-transition: color 0.2s ease-out;
+  transition: color 0.2s ease-out;
+}
+
+.footer__link:hover {
+  color: #EC1F46;
+}
+
 .footer__text {
   color: #BDBDBD;
 }
@@ -952,7 +976,8 @@ img {
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
   max-width: 478px;
-  padding: 33px 88px;
+  min-width: 300px;
+  padding: 2% 5.2%;
   background-color: #0A223D;
   border-radius: 8px;
   z-index: 101;
@@ -978,7 +1003,7 @@ img {
   border: none;
   padding: 0 23px;
   height: 50px;
-  margin-bottom: 15px;
+  margin-top: 10px;
   font-size: 12px;
   line-height: 15px;
   color: #BDBDBD;
@@ -986,7 +1011,6 @@ img {
 
 .modal__textarea {
   width: 100%;
-  max-width: 302px;
   max-height: 123px;
   border-radius: 4px;
   background-color: #ffffff;
@@ -996,10 +1020,11 @@ img {
   font-size: 12px;
   line-height: 15px;
   color: #BDBDBD;
-  margin-bottom: 15px;
+  margin-top: 10px;
 }
 
 .modal__title {
+  margin-top: 0;
   font-weight: bold;
   font-size: 18px;
   line-height: 23px;
@@ -1009,6 +1034,7 @@ img {
 }
 
 .modal__button {
+  margin-top: 10px;
   min-width: 160px;
   min-height: 50px;
   padding: 18px;
@@ -1019,13 +1045,21 @@ img {
   line-height: 15px;
   color: #ffffff;
   background-color: #EC1F46;
+  cursor: pointer;
 }
 
 .modal__info {
+  margin-top: 10px;
   font-weight: bold;
   font-size: 12px;
   line-height: 15px;
   color: #BDBDBD;
+}
+
+.modal__error {
+  font-size: 12px;
+  height: 10px;
+  color: #EC1F46;
 }
 
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
@@ -1774,6 +1808,9 @@ template {
     grid-row: 7;
     -ms-grid-column: 1;
     grid-column: 1;
+  }
+  .modal__dialog {
+    padding: 6.2% 5.2%;
   }
 }
 /*# sourceMappingURL=style.css.map */
