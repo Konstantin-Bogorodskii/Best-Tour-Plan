@@ -8,6 +8,7 @@
     <link
       href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;600;700&family=Nunito:wght@400;600;800&display=swap"
       rel="stylesheet"
+      rel="preload"
     />
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/aos.css" />
@@ -576,25 +577,31 @@
           <div class="footer__contact-form" data-aos="fade-down-right" data-aos-duration="1500">
             <h3 class="footer__title footer__title--mb-3">Send us a message</h3>
             <form action="send.php" method="POST" class="footer__form">
-              <input
+              <div class="footer__input-group">
+                <input
                 type="text"
                 class="footer__input"
                 placeholder="Your Full Name*"
                 name="name"
               />
-              <input
+              <div class="footer__error"></div>
+              </div>
+              <div class="footer__input-group">
+                <input
                 type="tel"
                 class="footer__input"
                 placeholder="Phone Number*"
                 name="phone"
               />
+              <div class="footer__error"></div>
+              </div>
               <textarea
-                cols="30"
-                rows="10"
+                
                 class="footer__textarea"
                 placeholder="Message"
                 name="message"
               ></textarea>
+              <div class="footer__error"></div>
               <button class="footer__button" type="submit">Send</button>
               <span class="footer__info">* Required Fields</span>
             </form>
@@ -639,8 +646,7 @@
           />
           <div class="modal__error"></div>
           <textarea
-            cols="30"
-            rows="10"
+            
             class="modal__textarea"
             placeholder="Message"
             name="message"

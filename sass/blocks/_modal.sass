@@ -50,8 +50,7 @@
     color: $grey
   &__textarea
     width: 100%
-    // max-width: 302px
-    max-height: 123px
+    min-height: 123px
     border-radius: 4px
     background-color: $white
     padding: 18px 23px
@@ -70,6 +69,8 @@
     color: $white
     text-align: center
   &__button
+    position: relative
+    top: 0
     margin-top: 10px
     min-width: 160px
     min-height: 50px
@@ -89,7 +90,10 @@
     line-height: 15px
     color: $grey  
   &__error
-    font-size: 12px
-    height: 10px
+    margin-top: 7px
+    font-size: 14px
+    font-weight: 600
+    min-height: 10px
     color: $primary
+    text-decoration: underline
     

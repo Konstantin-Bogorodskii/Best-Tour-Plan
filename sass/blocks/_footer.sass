@@ -70,13 +70,15 @@
   &__text
     color: $grey
   &__input
+    width: 100%
     background: $white
     border-radius: 4px
     border: none
     padding: 0 23px
     height: 50px
-    margin-bottom: 15px
-    flex-basis: 48%
+    &-group
+      flex-basis: 48%
+      margin-bottom: 5px
   &__textarea
     border-radius: 4px
     background-color: $white
@@ -85,7 +87,10 @@
     border: none
     resize: none
     margin-bottom: 23px
+    min-height: 123px
   &__button
+    position: relative
+    top: 0
     min-width: 160px
     min-height: 50px
     padding: 18px
@@ -101,3 +106,12 @@
     font-size: 12px
     line-height: 15px
     color: $grey  
+  &__error
+    font-size: 14px
+    font-weight: 600
+    min-height: 5px
+    color: $primary
+    text-decoration: underline
+    margin-top: 7px
+    margin-bottom: 7px
+

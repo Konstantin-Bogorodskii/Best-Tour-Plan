@@ -66,11 +66,14 @@ $(document).ready(function () {
       modalDialog.removeClass('modal__dialog--visible');
     }
   });
+
   const regExpEmail =
     /^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/;
   const regExpPhone = /^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$/;
   const regExpName = /^([А-Я]{1}[а-яё]{2,23}|[A-Z]{1}[a-z]{2,23})$/;
+  const regExpCapitalLetter = /^[A-Z]/;
   let form = document.querySelector('.modal__form');
+  let formFooter = document.querySelector('.footer__form');
   let isValidate = false;
   const submit = () => {
     alert('Данные отправлены!');
@@ -78,9 +81,15 @@ $(document).ready(function () {
 
   const validateForm = function (key) {
     if (key.name == 'name') {
-      if (!regExpName.test(key.value) || key.value == '') {
+      if (!regExpName.test(key.value)) {
         isValidate = false;
         key.nextElementSibling.textContent = 'Введите корректное имя!';
+        if (key.value === '') {
+          key.nextElementSibling.textContent = 'Данное поле не заполнено!';
+        } else if (!regExpCapitalLetter.test(key.value[0])) {
+          key.nextElementSibling.textContent =
+            'Имя должно начинаться с большой буквы!';
+        }
       } else {
         isValidate = true;
         key.nextElementSibling.textContent = '';
@@ -88,19 +97,33 @@ $(document).ready(function () {
     }
 
     if (key.name == 'email') {
-      if (!regExpEmail.test(key.value) || key.value == '') {
-        isValidate = false;
+      if (!regExpEmail.test(key.value)) {
         key.nextElementSibling.textContent = 'Введите корректный Email!';
+        if (key.value === '') {
+          key.nextElementSibling.textContent = 'Данное поле не заполнено!';
+        }
       } else {
         isValidate = true;
         key.nextElementSibling.textContent = '';
       }
     }
 
+    // if (key.name == 'message') {
+    //   if (key.value === '') {
+    //     key.nextElementSibling.textContent = 'Данное поле не заполнено!';
+    //   } else {
+    //     isValidate = true;
+    //     key.nextElementSibling.textContent = '';
+    //   }
+    // }
+
     if (key.name == 'phone') {
       if (!regExpPhone.test(key.value) || key.value == '') {
         isValidate = false;
         key.nextElementSibling.textContent = 'Введите корректный номер!';
+        if (key.value === '') {
+          key.nextElementSibling.textContent = 'Данное поле не заполнено!';
+        }
       } else {
         isValidate = true;
         key.nextElementSibling.textContent = '';
@@ -116,14 +139,44 @@ $(document).ready(function () {
     }
   }
 
+  for (let key of formFooter.elements) {
+    if (key.tagName != 'BUTTON') {
+      key.addEventListener('blur', () => {
+        validateForm(key);
+      });
+    }
+  }
+
   form.addEventListener('submit', e => {
     e.preventDefault();
     for (let key of form.elements) {
-      if (key.value == '' && key.tagName != 'BUTTON') {
-        isValidate = false;
+      if (
+        key.value == '' &&
+        key.tagName != 'BUTTON' &&
+        key.tagName != 'TEXTAREA'
+      ) {
         key.nextElementSibling.textContent = 'Данное поле не заполнено!';
       } else {
-        isValidate = true;
+        key.nextElementSibling.textContent = '';
+      }
+    }
+    if (isValidate) {
+      submit();
+      form.reset();
+    } else {
+      alert('Заполните все поля!');
+    }
+  });
+  formFooter.addEventListener('submit', e => {
+    e.preventDefault();
+    for (let key of form.elements) {
+      if (
+        key.value == '' &&
+        key.tagName != 'BUTTON' &&
+        key.tagName != 'TEXTAREA'
+      ) {
+        key.nextElementSibling.textContent = 'Данное поле не заполнено!';
+      } else {
         key.nextElementSibling.textContent = '';
       }
     }
