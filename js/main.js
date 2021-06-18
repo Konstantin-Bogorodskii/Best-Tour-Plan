@@ -169,7 +169,7 @@ $(document).ready(function () {
   });
   formFooter.addEventListener('submit', e => {
     e.preventDefault();
-    for (let key of form.elements) {
+    for (let key of formFooter.elements) {
       if (
         key.value == '' &&
         key.tagName != 'BUTTON' &&

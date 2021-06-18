@@ -101,14 +101,22 @@
     line-height: 15px
     color: $white
     background-color: $primary
+    transition: background-color 0.5s linear 0
+    &:active
+      top: 2px
+    &:hover
+      background-color: #da1136
+      box-shadow: 0 0 7px $bg
+    &:focus
+      outline: none
+      box-shadow: 0 0 7px $bg
   &__info
     font-weight: bold
     font-size: 12px
     line-height: 15px
     color: $grey  
   &__error
-    font-size: 14px
-    font-weight: 600
+    font-size: 12px
     min-height: 5px
     color: $primary
     text-decoration: underline
